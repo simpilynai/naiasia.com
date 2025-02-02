@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nai'Asia | CEO & Future Millionaire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Background Gradient */
+        body {
+            background: linear-gradient(to right, #ffd1dc, #e0bbff);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            color: #6b377c;
+            margin: 0;
+            padding: 0;
+            cursor: url('https://cur.cursors-4u.net/nature/nat-10/nat993.cur'), auto;
+            overflow-y: auto; /* Enables scrolling */
+            min-height: 100vh;
+        }
+
+        /* Bouncy Title */
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            color: #ff66b2;
+            margin-top: 50px;
+            animation: bounce 1.5s infinite alternate;
+        }
+
+        /* Main Container */
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            position: relative;
+        }
+
+        /* Typing Animation */
+        .typing {
+            font-size: 1.2rem;
+            color: #555;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #ff66b2;
+            width: 0;
+            animation: typing 3s steps(40, end) forwards, blink 0.7s infinite;
+        }
+
+        /* Buttons */
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff66b2;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background: #e04e9b;
+            transform: scale(1.1);
+            box-shadow: 0px 0px 10px #ff66b2;
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            opacity: 0.7;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 1.5s linear infinite;
+        }
+
+        /* Falling Stars */
+        .star {
+            position: absolute;
+            color: #fff;
+            font-size: 12px;
+            top: -10px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(100vh); opacity: 0; }
+        }
+
+        /* Bouncing Hello Kitty */
+        .hello-kitty {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 80px;
+            animation: bounce 1.5s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        /* Contact Form */
+        .contact-form {
+            margin-top: 20px;
+            padding: 10px;
+            background: #ffe6f2;
+            border-radius: 10px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ff66b2;
+        }
+
+        .contact-form button {
+            background: #ff66b2;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background: #e04e9b;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to My World ✨</h1>
+
+    <div class="container">
+        <h2>Hi, I'm Nai'Asia! 💕</h2>
+        <p class="typing">CEO | Future Millionaire | Business Innovator</p>
+        <p>I’m on a journey to build my empire, one step at a time. I love business, investing, and creating new things. Follow my journey as I turn my dreams into reality!</p>
+
+        <div class="buttons">
+            <a href="#" class="btn">Follow Me</a>
+            <a href="#" class="btn">Contact Me</a>
+        </div>
+
+        <div class="contact-form">
+            <h3>Send Me a Message 💌</h3>
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea placeholder="Your Message"></textarea>
+            <button>Send</button>
+        </div>
+    </div>
+
+    <!-- Bouncing Hello Kitty -->
+    <img src="https://i.ibb.co/hRXT1F22/IMG-2610.png" class="hello-kitty" alt="Hello Kitty">
+    <script>
+        // Sparkle Effect
+        document.addEventListener("mousemove", function(e) {
+            for (let i = 0; i < 3; i++) {
+                let sparkle = document.createElement("div");
+                sparkle.classList.add("sparkle");
+                document.body.appendChild(sparkle);
+                sparkle.style.left = e.pageX + Math.random() * 10 - 5 + "px";
+                sparkle.style.top = e.pageY + Math.random() * 10 - 5 + "px";
+                sparkle.style.animationDuration = 1 + Math.random() + "s";
+                setTimeout(() => sparkle.remove(), 1500);
+            }
+        });
+
+        // Falling Stars
+        function createStar() {
+            let star = document.createElement("div");
+            star.classList.add("star");
+            star.innerHTML = "✨";
+            star.style.left = Math.random() * 100 + "vw";
+            star.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(star);
+            setTimeout(() => star.remove(), 5000);
+        }
+        setInterval(createStar, 500);
+    </script>
+
+</body>
+</html>
