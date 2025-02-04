@@ -144,6 +144,26 @@
             background: #e04e9b;
         }
 
+        /* Social Media Icons */
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+            transition: 0.3s;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+
     </style>
 </head>
 <body>
@@ -156,7 +176,6 @@
         <p>I’m on a journey to build my empire, one step at a time. I love business, investing, and creating new things. Follow my journey as I turn my dreams into reality!</p>
 
         <div class="buttons">
-    
             <a href="#" class="btn">Contact Me</a>
         </div>
 
@@ -165,12 +184,22 @@
             <input type="text" placeholder="Your Name">
             <input type="email" placeholder="Your Email">
             <textarea placeholder="Your Message"></textarea>
-            <button>Send</button>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.instagram.com/simplynaiguides?igsh=dmFtN3RzNDMxbndr">
+                <img src="https://i.ibb.co/0jcwQBBq/IMG-2628.png" alt="Instagram Icon">
+            </a>
+            <a href="https://beacons.ai/simplynaiguides">
+                <img src="https://i.ibb.co/zhJgZ0jc/IMG-2627.png" alt="Shop Icon">
+            </a>
         </div>
     </div>
 
     <!-- Bouncing Hello Kitty -->
     <img src="https://i.ibb.co/hRXT1F22/IMG-2610.png" class="hello-kitty" alt="Hello Kitty">
+
     <script>
         // Sparkle Effect
         document.addEventListener("mousemove", function(e) {
@@ -196,6 +225,32 @@
             setTimeout(() => star.remove(), 5000);
         }
         setInterval(createStar, 500);
+
+        // Contact form submission
+        function sendMessage() {
+            let name = document.querySelector("input[type='text']").value;
+            let email = document.querySelector("input[type='email']").value;
+            let message = document.querySelector("textarea").value;
+
+            if (name && email && message) {
+                // Send the message (simulated)
+                alert("Your message has been sent! 💖");
+
+                // Add cute hearts animation
+                let hearts = document.createElement("div");
+                hearts.innerHTML = "💕";
+                hearts.style.fontSize = "30px";
+                hearts.style.position = "absolute";
+                hearts.style.top = "50%";
+                hearts.style.left = "50%";
+                hearts.style.transform = "translate(-50%, -50%)";
+                document.body.appendChild(hearts);
+
+                // You would send this form data to your email here (simulate with a mock-up).
+            } else {
+                alert("Please fill out all fields!");
+            }
+        }
     </script>
 
 </body>
