@@ -30,8 +30,8 @@
         }
 
         .social-icons img {
-            width: 50px;
-            height: 50px;
+            width: 90px; /* Updated size */
+            height: 90px; /* Updated size */
             transition: 0.3s;
         }
 
@@ -201,7 +201,12 @@
     <!-- Bouncing Hello Kitty -->
     <img src="https://i.ibb.co/hRXT1F22/IMG-2610.png" class="hello-kitty" alt="Hello Kitty">
 
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
+        (function(){
+            emailjs.init("fuo-OdWZk8vaYq_mQ"); // Your public key
+        })();
+
         // Sparkle Effect
         document.addEventListener("mousemove", function(e) {
             for (let i = 0; i < 3; i++) {
@@ -234,7 +239,16 @@
             let message = document.getElementById("message").value;
 
             if (name && email && message) {
-                alert("Your message has been sent! 💖");
+                emailjs.send("service_x0efzml", "template_pvy96we", {
+                    name: name,
+                    email: email,
+                    message: message
+                })
+                .then(function(response) {
+                    alert("Your message has been sent! 💖");
+                }, function(error) {
+                    alert("Failed to send message. Please try again later.");
+                });
             } else {
                 alert("Please fill out all fields!");
             }
