@@ -4,12 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nai'Asia | CEO & Future Millionaire</title>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS User ID
-        })();
-    </script>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Background Gradient */
@@ -25,20 +19,22 @@
             min-height: 100vh;
         }
 
-        /* Social Media Icons */
+        /* Social Media Icons at the Top */
         .social-icons {
-            margin-top: 20px;
+            margin: 30px auto;
+            width: 100%;
         }
 
         .social-icons a {
-            margin: 15px;
+            margin: 0 20px;
             display: inline-block;
         }
 
         .social-icons img {
-            width: 90px; /* Increased size */
-            height: 90px;
+            width: 120px;
+            height: 120px;
             transition: 0.3s;
+            animation: bounce 1.5s infinite alternate;
         }
 
         .social-icons img:hover {
@@ -130,6 +126,32 @@
             background: #e04e9b;
         }
 
+        /* Sparkle Effect */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            opacity: 0.7;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 1.5s linear infinite;
+        }
+
+        /* Falling Stars */
+        .star {
+            position: absolute;
+            color: #fff;
+            font-size: 12px;
+            top: -10px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(100vh); opacity: 0; }
+        }
+
         /* Bouncing Hello Kitty */
         .hello-kitty {
             position: fixed;
@@ -148,20 +170,19 @@
 </head>
 <body>
 
-    <!-- Social Media Icons -->
-    <div class="social-icons">
-        <a href="https://www.instagram.com/simplynaiguides?igsh=dmFtN3RzNDMxbndr">
-            <img src="https://i.ibb.co/0jcwQBBq/IMG-2628.png" alt="Instagram Icon">
-        </a>
-        <a href="https://beacons.ai/simplynaiguides">
-            <img src="https://i.ibb.co/zhJgZ0jc/IMG-2627.png" alt="Shop Icon">
-        </a>
-    </div>
-
     <h1>Welcome to My World ✨</h1>
 
     <div class="container">
         <h2>Hi, I'm Nai'Asia! 💕</h2>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/simplynaiguides?igsh=dmFtN3RzNDMxbndr">
+                <img src="https://i.ibb.co/0jcwQBBq/IMG-2628.png" alt="Instagram Icon">
+            </a>
+            <a href="https://beacons.ai/simplynaiguides">
+                <img src="https://i.ibb.co/zhJgZ0jc/IMG-2627.png" alt="Shop Icon">
+            </a>
+        </div>
         <p class="typing">CEO | Future Millionaire | Business Innovator</p>
         <p>I’m on a journey to build my empire, one step at a time. I love business, investing, and creating new things. Follow my journey as I turn my dreams into reality!</p>
 
@@ -182,25 +203,43 @@
     <img src="https://i.ibb.co/hRXT1F22/IMG-2610.png" class="hello-kitty" alt="Hello Kitty">
 
     <script>
-        // Contact Form Submission with EmailJS
+        // Sparkle Effect
+        document.addEventListener("mousemove", function(e) {
+            for (let i = 0; i < 3; i++) {
+                let sparkle = document.createElement("div");
+                sparkle.classList.add("sparkle");
+                document.body.appendChild(sparkle);
+                sparkle.style.left = e.pageX + Math.random() * 10 - 5 + "px";
+                sparkle.style.top = e.pageY + Math.random() * 10 - 5 + "px";
+                sparkle.style.animationDuration = 1 + Math.random() + "s";
+                setTimeout(() => sparkle.remove(), 1500);
+            }
+        });
+
+        // Falling Stars
+        function createStar() {
+            let star = document.createElement("div");
+            star.classList.add("star");
+            star.innerHTML = "✨";
+            star.style.left = Math.random() * 100 + "vw";
+            star.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(star);
+            setTimeout(() => star.remove(), 5000);
+        }
+        setInterval(createStar, 500);
+
+        // Contact form submission
         function sendMessage() {
             let name = document.getElementById("name").value;
             let email = document.getElementById("email").value;
             let message = document.getElementById("message").value;
 
             if (name && email && message) {
-                emailjs.send("service_x0efzml", "template_pvy96we", {
-                    from_name: name,
-                    from_email: email,
-                    message: message
-                }).then(function(response) {
-                    alert("Your message has been sent! 💖");
-                    document.getElementById("name").value = "";
-                    document.getElementById("email").value = "";
-                    document.getElementById("message").value = "";
-                }, function(error) {
-                    alert("Oops! Something went wrong. Please try again.");
-                });
+                alert("Your message has been sent! 💖");
+                // Clear the form
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("message").value = "";
             } else {
                 alert("Please fill out all fields!");
             }
