@@ -15,8 +15,28 @@
             margin: 0;
             padding: 0;
             cursor: url('https://cur.cursors-4u.net/nature/nat-10/nat993.cur'), auto;
-            overflow-y: auto; /* Enables scrolling */
+            overflow-y: auto;
             min-height: 100vh;
+        }
+
+        /* Social Media Icons at the Top */
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .social-icons img {
+            width: 50px;
+            height: 50px;
+            transition: 0.3s;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
         }
 
         /* Bouncy Title */
@@ -24,7 +44,7 @@
             font-family: 'Pacifico', cursive;
             font-size: 3rem;
             color: #ff66b2;
-            margin-top: 50px;
+            margin-top: 20px;
             animation: bounce 1.5s infinite alternate;
         }
 
@@ -75,7 +95,36 @@
             box-shadow: 0px 0px 10px #ff66b2;
         }
 
-        /* Sparkles */
+        /* Contact Form */
+        .contact-form {
+            margin-top: 20px;
+            padding: 10px;
+            background: #ffe6f2;
+            border-radius: 10px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ff66b2;
+        }
+
+        .contact-form button {
+            background: #ff66b2;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background: #e04e9b;
+        }
+
+        /* Sparkle Effect */
         .sparkle {
             position: absolute;
             width: 8px;
@@ -115,58 +164,19 @@
             to { transform: translateY(-10px); }
         }
 
-        /* Contact Form */
-        .contact-form {
-            margin-top: 20px;
-            padding: 10px;
-            background: #ffe6f2;
-            border-radius: 10px;
-        }
-
-        .contact-form input, .contact-form textarea {
-            width: 90%;
-            padding: 10px;
-            margin: 5px;
-            border-radius: 5px;
-            border: 1px solid #ff66b2;
-        }
-
-        .contact-form button {
-            background: #ff66b2;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .contact-form button:hover {
-            background: #e04e9b;
-        }
-
-        /* Social Media Icons */
-        .social-icons {
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            margin: 10px;
-            display: inline-block;
-        }
-
-        .social-icons img {
-            width: 40px;
-            height: 40px;
-            transition: 0.3s;
-        }
-
-        .social-icons img:hover {
-            transform: scale(1.1);
-        }
-
     </style>
 </head>
 <body>
+
+    <!-- Social Media Icons at the Top -->
+    <div class="social-icons">
+        <a href="https://www.instagram.com/simplynaiguides?igsh=dmFtN3RzNDMxbndr">
+            <img src="https://i.ibb.co/0jcwQBBq/IMG-2628.png" alt="Instagram Icon">
+        </a>
+        <a href="https://beacons.ai/simplynaiguides">
+            <img src="https://i.ibb.co/zhJgZ0jc/IMG-2627.png" alt="Shop Icon">
+        </a>
+    </div>
 
     <h1>Welcome to My World ✨</h1>
 
@@ -181,19 +191,10 @@
 
         <div class="contact-form">
             <h3>Send Me a Message 💌</h3>
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Your Email">
-            <textarea placeholder="Your Message"></textarea>
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="email" id="email" placeholder="Your Email">
+            <textarea id="message" placeholder="Your Message"></textarea>
             <button onclick="sendMessage()">Send</button>
-        </div>
-
-        <div class="social-icons">
-            <a href="https://www.instagram.com/simplynaiguides?igsh=dmFtN3RzNDMxbndr">
-                <img src="https://i.ibb.co/0jcwQBBq/IMG-2628.png" alt="Instagram Icon">
-            </a>
-            <a href="https://beacons.ai/simplynaiguides">
-                <img src="https://i.ibb.co/zhJgZ0jc/IMG-2627.png" alt="Shop Icon">
-            </a>
         </div>
     </div>
 
@@ -228,25 +229,12 @@
 
         // Contact form submission
         function sendMessage() {
-            let name = document.querySelector("input[type='text']").value;
-            let email = document.querySelector("input[type='email']").value;
-            let message = document.querySelector("textarea").value;
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
 
             if (name && email && message) {
-                // Send the message (simulated)
                 alert("Your message has been sent! 💖");
-
-                // Add cute hearts animation
-                let hearts = document.createElement("div");
-                hearts.innerHTML = "💕";
-                hearts.style.fontSize = "30px";
-                hearts.style.position = "absolute";
-                hearts.style.top = "50%";
-                hearts.style.left = "50%";
-                hearts.style.transform = "translate(-50%, -50%)";
-                document.body.appendChild(hearts);
-
-                // You would send this form data to your email here (simulate with a mock-up).
             } else {
                 alert("Please fill out all fields!");
             }
